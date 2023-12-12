@@ -13,11 +13,10 @@
       </div>
     </app-grid>
   </section>
-
+  @if(definitions){
   <app-grid>
     <section>
       <h1>{{ definitions.word }}</h1>
-
       <ol>
         @for(definition of definitions.results; track definition.definition){
         <li>{{ definition.definition }}</li>
@@ -30,4 +29,5 @@
       </ol>
     </section>
   </app-grid>
+  }
 </main>

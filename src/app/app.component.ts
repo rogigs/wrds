@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTreeModule } from '@angular/material/tree';
-import { WordsApiService } from './services/words-api.service';
+import { WordDefinition, WordsApiService } from './services/words-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { GridComponent } from './components/grid/grid.component';
@@ -33,15 +33,7 @@ import { GridComponent } from './components/grid/grid.component';
 export class AppComponent {
   title = 'wrds';
   word = '';
-  definitions: any = {
-    word: 'Example',
-    results: [
-      {
-        definition: 'For build a css',
-        examples: ['To delete', 'To delete after'],
-      },
-    ],
-  };
+  definitions: WordDefinition | undefined = undefined;
 
   constructor(private wordsApiService: WordsApiService) {}
 
