@@ -1,13 +1,16 @@
 <main>
   <section class="section__form">
     <app-grid>
-      <form (ngSubmit)="onSubmit()" #wordForm="ngForm">
-        <mat-form-field>
-          <mat-label>Word</mat-label>
-          <input matInput [(ngModel)]="word" name="inputWord" />
-        </mat-form-field>
-        <button mat-raised-button color="primary">Search</button>
-      </form>
+      <div>
+        <img src="../assets/brain_draw.png" loading="lazy" />
+        <form (ngSubmit)="onSubmit()" #wordForm="ngForm">
+          <mat-form-field>
+            <mat-label>Word</mat-label>
+            <input matInput [(ngModel)]="word" name="inputWord" />
+          </mat-form-field>
+          <button mat-raised-button color="primary">Search</button>
+        </form>
+      </div>
     </app-grid>
   </section>
 
