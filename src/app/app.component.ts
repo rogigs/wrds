@@ -9,6 +9,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { WordsApiService } from './services/words-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { GridComponent } from './components/grid/grid.component';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     HttpClientModule,
     FormsModule,
+    GridComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',

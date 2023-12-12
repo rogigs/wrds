@@ -1,23 +1,30 @@
 <main>
-  <form (ngSubmit)="onSubmit()" #wordForm="ngForm">
-    <mat-form-field>
-      <mat-label>Word</mat-label>
-      <input matInput [(ngModel)]="word" name="inputWord" />
-    </mat-form-field>
-    <button mat-raised-button color="primary">Search</button>
-  </form>
-  <section>
-    <h1>{{ definitions.word }}</h1>
-
-    <ol>
-      @for(definition of definitions.results; track definition.definition){
-      <li>{{ definition.definition }}</li>
-      <ul>
-        @for(example of definition.examples; track example){
-        <li>{{ example }}</li>
-        }
-      </ul>
-      }
-    </ol>
+  <section class="section__form">
+    <app-grid>
+      <form (ngSubmit)="onSubmit()" #wordForm="ngForm">
+        <mat-form-field>
+          <mat-label>Word</mat-label>
+          <input matInput [(ngModel)]="word" name="inputWord" />
+        </mat-form-field>
+        <button mat-raised-button color="primary">Search</button>
+      </form>
+    </app-grid>
   </section>
+
+  <app-grid>
+    <section>
+      <h1>{{ definitions.word }}</h1>
+
+      <ol>
+        @for(definition of definitions.results; track definition.definition){
+        <li>{{ definition.definition }}</li>
+        <ul>
+          @for(example of definition.examples; track example){
+          <li>{{ example }}</li>
+          }
+        </ul>
+        }
+      </ol>
+    </section>
+  </app-grid>
 </main>
