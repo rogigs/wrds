@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTreeModule } from '@angular/material/tree';
 import { WordsApiService } from './services/words-api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
+    FormsModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
@@ -28,15 +30,22 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'wrds';
-  word = 'world';
-  definitions: any = '';
+  word = '';
+  definitions: any = {
+    word: 'Example',
+    results: [
+      {
+        definition: 'For build a css',
+        examples: ['To delete', 'To delete after'],
+      },
+    ],
+  };
 
   constructor(private wordsApiService: WordsApiService) {}
 
-  ngOnInit(): void {
+  onSubmit() {
     this.wordsApiService
       .getWord(this.word)
       .subscribe((definitions) => (this.definitions = definitions));
-    console.log(this.definitions);
   }
 }
