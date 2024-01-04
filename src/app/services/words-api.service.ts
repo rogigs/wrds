@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { exampleWordResponse } from './responses/words-api.response';
 
 export type WordDefinition = typeof exampleWordResponse;
@@ -8,9 +7,14 @@ export type WordDefinition = typeof exampleWordResponse;
 export class WordsApiService {
   constructor(private http: HttpClient) {}
 
-  getWord(word: string): Observable<WordDefinition> {
+  getWord(word: string) {
+    const headers = new HttpHeaders({
+      'X-RapidAPI-Key': '',
+    });
+
     return this.http.get<WordDefinition>(
-      `https://wordsapiv1.p.rapidapi.com/words/${word}`
+      `https://wordsapiv1.p.rapidapi.com/words/${word}`,
+      { headers }
     );
   }
 }
