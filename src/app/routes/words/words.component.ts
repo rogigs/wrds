@@ -4,13 +4,11 @@ import { RouterOutlet } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {
-  WordsApiService,
-  WordDefinition,
-} from '../../services/words-api.service';
+import { WordsApiService, Word } from '../../services/words-api.service';
 import { GridComponent } from '../../components/grid/grid.component';
 
 import { AppMaterialModule } from '../../shared/app-material.module';
+import { WordPipe } from '../../shared/pipes/word.pipe';
 
 @Component({
   selector: 'app-words',
@@ -22,6 +20,7 @@ import { AppMaterialModule } from '../../shared/app-material.module';
     FormsModule,
     GridComponent,
     AppMaterialModule,
+    WordPipe,
   ],
   providers: [WordsApiService],
   templateUrl: './words.component.html',
@@ -30,7 +29,7 @@ import { AppMaterialModule } from '../../shared/app-material.module';
 export class WordsComponent {
   title = 'wrds';
   word = '';
-  words: WordDefinition | undefined;
+  words: Word | undefined;
 
   constructor(private wordsApiService: WordsApiService) {}
 
@@ -38,5 +37,9 @@ export class WordsComponent {
     this.wordsApiService
       .getWord(this.word)
       .subscribe((words) => (this.words = words));
+  }
+
+  log(val: any) {
+    console.log(val);
   }
 }
