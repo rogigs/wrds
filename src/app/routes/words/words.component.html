@@ -14,19 +14,27 @@
     </app-grid>
   </section>
 
-  @if(words){
+  @if (words){
   <app-grid>
     <mat-list>
       <mat-list-item>
         <div matListItemTitle>{{ words.word }}</div>
-        @for (word of words | word; track word) {
+      </mat-list-item>
+      <!-- NOTE: the angular material isn't work well with deferrable views -->
+      @for (word of words | word; track word) { @defer (on viewport()) {
+      <mat-list-item style="height: 200px">
         <mat-icon matListItemIcon>favorite </mat-icon>
         <mat-icon matListItemIcon>favorite_border </mat-icon>
-        <div matListItemLine>{{ word.definition }}</div>
-        }@empty{
-        <div matListItemLine>None word founded</div>
-        }
+        <div matListItemLine>
+          {{ word.definition }}
+        </div>
       </mat-list-item>
+      } @placeholder {
+      <span>...</span>
+      } }@empty{
+      <div matListItemLine>None word founded</div>
+
+      }
     </mat-list>
   </app-grid>
   }
