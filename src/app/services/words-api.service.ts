@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { exampleWordResponse } from './responses/words-api.response';
 
-export type WordDefinition = typeof exampleWordResponse;
+export type Word = typeof exampleWordResponse;
 @Injectable({ providedIn: 'root' })
 export class WordsApiService {
   constructor(private http: HttpClient) {}
@@ -12,7 +12,7 @@ export class WordsApiService {
       'X-RapidAPI-Key': '',
     });
 
-    return this.http.get<WordDefinition>(
+    return this.http.get<Word>(
       `https://wordsapiv1.p.rapidapi.com/words/${word}`,
       { headers }
     );
