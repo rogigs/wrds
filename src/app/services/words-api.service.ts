@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { exampleWordResponse } from './responses/words-api.response';
+import { environment } from '../../environments/environment';
 
 export type Word = typeof exampleWordResponse;
 @Injectable({ providedIn: 'root' })
@@ -9,7 +10,7 @@ export class WordsApiService {
 
   getWord(word: string) {
     const headers = new HttpHeaders({
-      'X-RapidAPI-Key': '',
+      'X-RapidAPI-Key': environment.apiKey,
     });
 
     return this.http.get<Word>(
